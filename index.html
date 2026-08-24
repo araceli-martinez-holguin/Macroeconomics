@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Graduate Macroeconomics | Araceli Martínez-Holguín</title>
+  <meta name="description" content="Graduate Macroeconomics — computational laboratories, quantitative models, problem sets, and empirical applications for the Master in Economics at UNAM.">
+  <style>
+    :root {
+      --ink: #17212b;
+      --muted: #5d6873;
+      --line: #dfe5e9;
+      --soft: #f5f7f8;
+      --accent: #1f5f7a;
+      --accent-dark: #17465a;
+      --white: #ffffff;
+      --max: 1080px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--white);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                   Helvetica, Arial, sans-serif;
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover { text-decoration: underline; }
+
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 72px 0 42px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 850px;
+      font-size: clamp(2.5rem, 6vw, 4.6rem);
+      line-height: 1.02;
+      letter-spacing: -0.045em;
+      font-weight: 750;
+    }
+
+    .subtitle {
+      max-width: 760px;
+      margin: 22px 0 26px;
+      font-size: 1.2rem;
+      color: var(--muted);
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .nav a {
+      display: inline-block;
+      padding: 9px 14px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      color: var(--ink);
+      font-size: .92rem;
+      background: #fff;
+    }
+
+    .nav a:hover {
+      border-color: var(--accent);
+      text-decoration: none;
+    }
+
+    section {
+      padding: 58px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h2 {
+      margin: 0 0 18px;
+      font-size: 1.8rem;
+      letter-spacing: -.025em;
+    }
+
+    h3 {
+      margin: 0 0 8px;
+      font-size: 1.05rem;
+    }
+
+    p { margin: 0 0 16px; }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 52px;
+      align-items: start;
+    }
+
+    .profile {
+      background: var(--soft);
+      padding: 26px;
+      border-radius: 10px;
+    }
+
+    .profile strong {
+      display: block;
+      font-size: 1.08rem;
+      margin-bottom: 8px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 26px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      padding: 22px;
+      background: #fff;
+    }
+
+    .number {
+      color: var(--accent);
+      font-weight: 750;
+      font-size: .82rem;
+      margin-bottom: 10px;
+    }
+
+    .lab {
+      display: grid;
+      grid-template-columns: 90px 1fr auto;
+      gap: 20px;
+      align-items: center;
+      padding: 20px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .lab:first-child { border-top: 0; }
+
+    .lab-number {
+      color: var(--accent);
+      font-weight: 750;
+      font-size: .85rem;
+    }
+
+    .lab p {
+      margin: 3px 0 0;
+      color: var(--muted);
+      font-size: .94rem;
+    }
+
+    .button {
+      white-space: nowrap;
+      padding: 8px 12px;
+      border-radius: 6px;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-size: .88rem;
+    }
+
+    .button:hover {
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+    }
+
+    .callout {
+      margin-top: 26px;
+      padding: 22px 24px;
+      background: var(--soft);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+    }
+
+    .tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 18px;
+    }
+
+    .tag {
+      padding: 7px 11px;
+      background: var(--soft);
+      border-radius: 6px;
+      font-size: .88rem;
+    }
+
+    footer {
+      padding: 38px 0 55px;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    @media (max-width: 800px) {
+      .intro-grid,
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .lab {
+        grid-template-columns: 1fr;
+        gap: 7px;
+      }
+
+      .lab .button {
+        width: fit-content;
+        margin-top: 8px;
+      }
+
+      header { padding-top: 48px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container">
+    <div class="eyebrow">Master in Economics · School of Economics · UNAM</div>
+
+    <h1>Graduate Macroeconomics</h1>
+
+    <p class="subtitle">
+      Macroeconomic theory, quantitative models, computational laboratories,
+      and empirical applications using R.
+    </p>
+
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#overview">Course Overview</a>
+      <a href="#topics">Topics</a>
+      <a href="#laboratories">Laboratories</a>
+      <a href="#assignments">Problem Sets</a>
+      <a href="#repository">Repository</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section id="overview">
+  <div class="container">
+    <div class="intro-grid">
+
+      <div>
+        <h2>Course Overview</h2>
+
+        <p>
+          This repository contains the computational materials developed for
+          the graduate Macroeconomics course in the Master in Economics
+          program at the School of Economics, UNAM.
+        </p>
+
+        <p>
+          The course combines macroeconomic theory with numerical methods,
+          simulations, data analysis, and computational experiments. The
+          objective is to use computational tools not simply to calculate
+          solutions, but to explore the mechanisms underlying macroeconomic
+          models and their implications for economic policy.
+        </p>
+
+        <p>
+          Laboratories are designed around a simple principle:
+          <strong>move from the economic model to the computational experiment,
+          and from the computational result back to economic interpretation.</strong>
+        </p>
+      </div>
+
+      <aside class="profile">
+        <strong>Instructor</strong>
+        <p>
+          Araceli Martínez-Holguín is a PhD student in Economics at the
+          School of Economics of the National Autonomous University of Mexico
+          (UNAM).
+        </p>
+        <p>
+          Her research interests include macroeconomics, monetary policy,
+          climate change, inflation, and sustainable finance.
+        </p>
+
+        <p>
+          <a href="https://github.com/araceli-martinez-holguin"
+             target="_blank" rel="noopener">GitHub</a>
+        </p>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<section id="topics">
+  <div class="container">
+    <h2>Topics Covered</h2>
+
+    <div class="cards">
+
+      <article class="card">
+        <div class="number">01</div>
+        <h3>Macroeconomic Foundations</h3>
+        <p>
+          Core macroeconomic concepts, equilibrium conditions, and analytical
+          frameworks.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="number">02</div>
+        <h3>Keynesian Macroeconomics</h3>
+        <p>
+          Aggregate demand, income determination, the IS-LM framework,
+          comparative statics, and macroeconomic policy.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="number">03</div>
+        <h3>Growth Theory</h3>
+        <p>
+          Quantitative implementations of growth models, including Solow and
+          Ramsey-Cass-Koopmans frameworks.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="number">04</div>
+        <h3>Business Cycle Models</h3>
+        <p>
+          Dynamic macroeconomic models, simulations, and the quantitative
+          analysis of fluctuations.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="number">05</div>
+        <h3>New Keynesian Macroeconomics</h3>
+        <p>
+          Inflation, output, monetary policy, expectations, and dynamic
+          adjustment.
+        </p>
+      </article>
+
+      <article class="card">
+        <div class="number">06</div>
+        <h3>Macroeconometrics</h3>
+        <p>
+          Time-series methods, filters, and VAR models for empirical
+          macroeconomic analysis.
+        </p>
+      </article>
+
+    </div>
+
+    <div class="callout">
+      <strong>Computational approach.</strong>
+      The repository uses R to translate theoretical models into numerical
+      experiments, simulations, visualizations, and reproducible analyses.
+    </div>
+  </div>
+</section>
+
+<section id="laboratories">
+  <div class="container">
+    <h2>Laboratories</h2>
+
+    <p>
+      Computational laboratories provide guided applications of the
+      macroeconomic models developed in class. Each laboratory connects the
+      theoretical structure of a model with its numerical implementation and
+      economic interpretation.
+    </p>
+
+    <div style="margin-top: 26px;">
+
+      <div class="lab">
+        <div class="lab-number">LAB 01</div>
+        <div>
+          <h3>IS-LM Model</h3>
+          <p>
+            Keynesian income determination, monetary equilibrium,
+            comparative statics, and macroeconomic shocks.
+          </p>
+        </div>
+        <a class="button"
+           href="https://github.com/araceli-martinez-holguin/Macroeconomics/tree/main/Laboratories"
+           target="_blank" rel="noopener">View files</a>
+      </div>
+
+      <div class="lab">
+        <div class="lab-number">LAB 02</div>
+        <div>
+          <h3>Coming soon</h3>
+          <p>Additional computational laboratory.</p>
+        </div>
+      </div>
+
+      <div class="lab">
+        <div class="lab-number">LAB 03</div>
+        <div>
+          <h3>Coming soon</h3>
+          <p>Additional computational laboratory.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="assignments">
+  <div class="container">
+    <h2>Problem Sets & Assignments</h2>
+
+    <p>
+      Problem sets complement the laboratories by asking students to apply
+      the models to new economic situations, modify the computational
+      experiments, and interpret their results.
+    </p>
+
+    <div class="lab" style="margin-top: 24px;">
+      <div class="lab-number">PS 01</div>
+      <div>
+        <h3>Macroeconomic Models and Comparative Statics</h3>
+        <p>
+          Exercises based on the computational laboratories and the analysis
+          of alternative macroeconomic scenarios.
+        </p>
+      </div>
+      <a class="button"
+         href="https://github.com/araceli-martinez-holguin/Macroeconomics/tree/main/Laboratories"
+         target="_blank" rel="noopener">Repository</a>
+    </div>
+
+    <div class="lab">
+      <div class="lab-number">PS 02</div>
+      <div>
+        <h3>Coming soon</h3>
+        <p>Additional problem set.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="repository">
+  <div class="container">
+    <h2>Repository</h2>
+
+    <p>
+      All computational materials are openly available on GitHub. Clone the
+      repository to work with the files locally and reproduce the
+      computational experiments.
+    </p>
+
+    <p style="margin-top: 22px;">
+      <a class="button"
+         href="https://github.com/araceli-martinez-holguin/Macroeconomics"
+         target="_blank" rel="noopener">Open GitHub Repository</a>
+    </p>
+
+    <h3 style="margin-top: 34px;">Tools</h3>
+
+    <div class="tools">
+      <span class="tag">R</span>
+      <span class="tag">RStudio</span>
+      <span class="tag">ggplot2</span>
+      <span class="tag">dplyr</span>
+      <span class="tag">Numerical Methods</span>
+      <span class="tag">Macroeconomic Models</span>
+      <span class="tag">Time Series</span>
+      <span class="tag">VAR Models</span>
+    </div>
+
+    <div class="callout">
+      <strong>Getting started.</strong>
+      Clone the repository, open the project in RStudio, navigate to the
+      relevant laboratory, and run the associated R scripts or documents.
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>
+      Araceli Martínez-Holguín · Graduate Macroeconomics ·
+      School of Economics, UNAM
+    </p>
+    <p>
+      <a href="https://github.com/araceli-martinez-holguin/Macroeconomics"
+         target="_blank" rel="noopener">GitHub Repository</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
